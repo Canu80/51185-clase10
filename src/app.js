@@ -1,5 +1,6 @@
 import express from "express";
 import handlebars from "express-handlebars";
+import http from "http";
 import { Server } from "socket.io";
 import __dirname from "./utils.js";
 import productsRouter from "./routes/products.router.js";
@@ -11,34 +12,39 @@ import ProductsManager from "./manager/productsManager.js";
 const PORT = 8080;
 const app = express();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-app.engine("handlebars", handlebars.engine());
-app.set("views", __dirname + "/views");
-app.set("view engine", "handlebars");
-
 const server = app.listen(PORT, () => {
   console.log("Servidor funcionando en el puerto: " + PORT);
 });
 
-app.use('/api/carts', cartsRouter);
-//app.use('/api/products', productsRouter);
+const io = new Server(server);
 
+app.use(express.static(__dirname + "/public"));
+app.engine("handlebars", handlebars.engine());
+app.set("views", __dirname + "/views");
+app.set("view engine", "handlebars");
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use('/api/carts', cartsRouter);
+app.use('/api/products', productsRouter);
 app.use("/", viewsRouter);
 app.use("/realtimeproducts", realTime);
 
 const productsManager = new ProductsManager();
 
-const io = new Server(server);
+io.on("connection", client=>{
+    console.log("Conectado el cliente")
+})
 
 io.on("connection", async client =>{
-    let allProducts = await productsManager.getProducts();
-    io.emit("Products", {allProducts});
+    const productos = await productsManager.getProducts();
+    io.emit("renderProducts", productos);
+    
 
-    client.on("submit", async data =>{
+    client.on("submitado", async data =>{
         await productsManager.addProduct(data);
-        io.emit("respuesta", data);
+        io.emit("addProduct", data);
     })
 
     client.on("delete", async data => {
@@ -53,7 +59,7 @@ io.on("connection", async client =>{
 
 // socketServerIO.on("connection", socket => {
 //   console.log("cliente conectado");
-  
+
 //   socket.on("message", data => {
 //     logs.push({ socketid: socket.id, mesage: data });
 //     socketServerIO.emit("log", { logs });

@@ -97,38 +97,5 @@
 		"status": true,
 		"category": "accesorios",
 		"id": 9
-	},
-	{
-		"title": "Bolsa de alimento",
-		"description": "Es una bolsa de 10Kg",
-		"price": "5268",
-		"thumbnail": "no hay",
-		"code": "ABC11",
-		"stock": "25",
-		"status": true,
-		"category": "Perros",
-		"id": 10
-	},
-	{
-		"title": "Bolsa de alimento",
-		"description": "Es una bolsa de 10Kg",
-		"price": "5268",
-		"thumbnail": "no hay",
-		"code": "ABC11",
-		"stock": "25",
-		"status": true,
-		"category": "Perros",
-		"id": 11
-	},
-	{
-		"title": "pepe",
-		"description": "pepe",
-		"price": "2222",
-		"thumbnail": "pw",
-		"code": "12",
-		"stock": "111",
-		"status": true,
-		"category": "Perros",
-		"id": 12
 	}
 ]
