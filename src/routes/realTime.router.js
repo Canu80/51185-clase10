@@ -31,7 +31,7 @@ router.post("/", async (req, res) => {
   };
 
   const msg = await productsManager.addProduct(newProduct);
-  res.send(msg);
+  res.redirect("/realtimeproducts");
 });
 
 

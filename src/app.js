@@ -33,11 +33,8 @@ app.use("/realtimeproducts", realTime);
 
 const productsManager = new ProductsManager();
 
-io.on("connection", client=>{
-    console.log("Conectado el cliente")
-})
-
 io.on("connection", async client =>{
+    console.log("Conectado el cliente")
     const productos = await productsManager.getProducts();
     io.emit("renderProducts", productos);
     
@@ -53,18 +50,4 @@ io.on("connection", async client =>{
     })
 
 })
-
-
-// const socketServerIO = new Server(server);
-
-// socketServerIO.on("connection", socket => {
-//   console.log("cliente conectado");
-
-//   socket.on("message", data => {
-//     logs.push({ socketid: socket.id, mesage: data });
-//     socketServerIO.emit("log", { logs });
-//   });
-// });
-
-
 
