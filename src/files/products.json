@@ -97,16 +97,5 @@
 		"status": true,
 		"category": "accesorios",
 		"id": 9
-	},
-	{
-		"title": "1",
-		"description": "1",
-		"price": "1",
-		"thumbnail": "1",
-		"code": "1",
-		"stock": "1",
-		"status": true,
-		"category": "1",
-		"id": 10
 	}
 ]
