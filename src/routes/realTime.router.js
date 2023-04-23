@@ -37,9 +37,9 @@ router.post("/", async (req, res) => {
 
 // Eliminar un producto
 router.delete("/", async (req, res) => {
-  const id = parseInt(req.params.pid);
+  const id = req.body.id;
   const msg = await productsManager.deleteProduct(id);
-  res.send(msg);
+  res.render("realTimeProducts");
 });
 
 export default router;

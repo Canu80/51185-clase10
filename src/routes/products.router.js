@@ -7,7 +7,7 @@ const productsManager = new ProductsManager();
 // Obtenemos todos los productos
 router.get("/", async (req, res) => {
   let allProducts = await productsManager.getProducts();
-  res.render("realTimeProducts", { products: allProducts });
+  res.render("home", { products: allProducts });
 });
 
 // Obtenemos un producto según su ID
@@ -63,7 +63,7 @@ router.put("/:pid", async (req, res) => {
 router.delete("/:pid", async (req, res) => {
   const id = parseInt(req.params.pid);
   const msg = await productsManager.deleteProduct(id);
-  res.render(msg);
+  res.send(msg);
 });
 
 export default router;

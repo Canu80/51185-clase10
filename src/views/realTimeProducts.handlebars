@@ -28,16 +28,18 @@
   </form>
   
 
-  <form action="/api/products" method="post">
+  <form method="post" action="api/products">
+    <input type="hidden" name="_method" value="DELETE">
     <br>
-    <label>Id del producto a eliminar</label>
-    <input name="id" id="pid">
+    <label for="id">Coloque el ID del producto a eliminar</label>
+    <input name="id" id="id">
     <br>
-    <input type="button" id="deleteProduct" value="Eliminar producto">
+    <br>
+    <input type="submit" id="deleteProduct" value="Eliminar producto">
   </form>
 
   <div>
-    <h2>Lista de productos</h2>
+    <h2>Todos nuestros productos</h2>
       <div id="allProducts"></div>
   </div>
     

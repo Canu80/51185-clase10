@@ -26,6 +26,14 @@ app.set("view engine", "handlebars");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// app.use((req, res, next) =>{
+//     if(req.body && req.body._method){
+//         req.method = req.body._method;
+//         delete req.body._method;
+//     }
+//     next();
+// });
+
 app.use('/api/carts', cartsRouter);
 app.use('/api/products', productsRouter);
 app.use("/", viewsRouter);
