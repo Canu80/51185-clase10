@@ -1,6 +1,5 @@
 import express from "express";
 import handlebars from "express-handlebars";
-import http from "http";
 import { Server } from "socket.io";
 import __dirname from "./utils.js";
 import productsRouter from "./routes/products.router.js";

@@ -1,7 +1,7 @@
 <div>
   <h2>Agregar un producto</h2>
 
-  <form action="/realtimeproducts" method="post">
+  <form method="post" action="/realtimeproducts">
     <ul>
     <label>Título</label>
     <input name="title">
@@ -28,14 +28,14 @@
   </form>
   
 
-  <form method="post" action="api/products">
+  <form method="post" action="/realtimeproducts">
     <input type="hidden" name="_method" value="DELETE">
     <br>
     <label for="id">Coloque el ID del producto a eliminar</label>
     <input name="id" id="id">
     <br>
     <br>
-    <input type="submit" id="deleteProduct" value="Eliminar producto">
+    <input type="button" id="deleteProduct" value="Eliminar producto">
   </form>
 
   <div>
